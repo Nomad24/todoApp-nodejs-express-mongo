@@ -1,0 +1,28 @@
+<h2>Todo Page</h2>
+
+<form action="/create" method="POST">
+    <div class="input-field">
+        <input type="text" name="title">
+        <label>Todo title</label>
+    </div>
+    <button type="submit" class="btn">Create</button>
+</form>
+{{#if todos.length}}
+<ul>
+    {{#each todos}}
+    <li class="todo">
+        <form action="/deltodo" method="POST">
+            <label>
+                <span>{{title}}</span>
+
+                <input type="hidden" value="{{_id}}" name="id">
+
+                <button class="btn btn-small" type="submit">Delete</button>
+            </label>
+        </form>
+    </li>
+    {{/each}}
+</ul>
+{{else}}
+<p>NO TODOS</p>
+{{/if}}
